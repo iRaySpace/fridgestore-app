@@ -1,5 +1,8 @@
 import strawberry
+from typing import List
 from datetime import datetime
+
+from shared.graphql_type import UpdatedType
 from .models import FridgeItem
 
 
@@ -19,3 +22,7 @@ class FridgeItemType:
             name=data.name,
             qty=data.qty,
         )
+
+@strawberry.type
+class UpdatedFridgeItemType(UpdatedType[FridgeItemType]):
+    pass
