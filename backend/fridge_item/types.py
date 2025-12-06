@@ -24,6 +24,10 @@ class FridgeItemType:
             qty=data.qty,
         )
 
+    @strawberry.field
+    def days_in_fridge(self) -> int:
+        delta = datetime.now() - self.created_at
+        return delta.days
 
 @strawberry.type
 class UpdatedFridgeItemType(UpdatedType[FridgeItemType]):
