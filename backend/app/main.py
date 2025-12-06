@@ -6,4 +6,4 @@ from app.graphql import schema
 init_database()
 
 app = FastAPI()
-app.include_router(GraphQLRouter(schema, path='/'))
+app.include_router(GraphQLRouter(schema, path="/"))

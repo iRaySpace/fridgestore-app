@@ -2,13 +2,15 @@ import strawberry
 from typing import Optional, List, TypeVar, Generic
 
 
-T = TypeVar('T')
+T = TypeVar("T")
+
 
 @strawberry.type
 class DeletedType:
     success: bool
     message: str
     deleted_id: Optional[int] = None
+
 
 @strawberry.type
 class UpdatedType(Generic[T]):

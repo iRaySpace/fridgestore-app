@@ -13,6 +13,7 @@ class FridgeItemType:
     id: int
     name: str
     qty: int
+
     @classmethod
     def from_orm(cls, data: FridgeItem):
         return cls(
@@ -22,6 +23,7 @@ class FridgeItemType:
             name=data.name,
             qty=data.qty,
         )
+
 
 @strawberry.type
 class UpdatedFridgeItemType(UpdatedType[FridgeItemType]):
