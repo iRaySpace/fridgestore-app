@@ -4,6 +4,14 @@ class ItemService {
   private items: Item[] = [];
   private currentId: number = -1;
 
+  getTotalItems(): number {
+    return this.items.length;
+  }
+
+  getTotalExpired(): number {
+    return this.items.filter(item => item.expired).length;
+  }
+
   getAll(): Item[] {
     return [...this.items];
   }

@@ -1,7 +1,12 @@
 import { View, StyleSheet, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export function Analytics() {
+export interface AnalyticsProps {
+  totalItems: number;
+  totalExpired: number;
+}
+
+export function Analytics({ totalItems, totalExpired }: AnalyticsProps) {
   return (
     <View style={styles.container}>
       <View style={[styles.cardView, styles.totalView]}>
@@ -11,7 +16,7 @@ export function Analytics() {
             <Ionicons name="file-tray-full-outline" color="#007AFF" size={21} />
           </View>
         </View>
-        <Text style={[styles.cardText, styles.numberText]}>10</Text>
+        <Text style={[styles.cardText, styles.numberText]}>{totalItems}</Text>
       </View>
       <View style={[styles.cardView, styles.expiredView]}>
         <View style={styles.cardTopView}>
@@ -20,7 +25,7 @@ export function Analytics() {
             <Ionicons name="ban-outline" color="#FF2D55" size={21} />
           </View>
         </View>
-        <Text style={[styles.cardText, styles.numberText]}>1</Text>
+        <Text style={[styles.cardText, styles.numberText]}>{totalExpired}</Text>
       </View>
     </View>
   );

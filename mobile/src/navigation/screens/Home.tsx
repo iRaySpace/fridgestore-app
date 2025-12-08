@@ -8,7 +8,7 @@ import { ItemCard } from '../../components/ItemCard';
 
 export function Home() {
   const navigation = useNavigation();
-  const { items, refresh } = useItemService();
+  const { items, totalItems, totalExpired, refresh } = useItemService();
 
   useFocusEffect(
     useCallback(() => {
@@ -27,7 +27,10 @@ export function Home() {
       ) : (
         <>
           <Text style={styles.welcomeText}>Welcome, Ivan!</Text>
-          <Analytics />
+          <Analytics
+            totalItems={totalItems}
+            totalExpired={totalExpired}
+          />
           <View style={styles.itemView}>
             <Text style={styles.itemText}>Items</Text>
             <Pressable onPress={handleAddItem}>
