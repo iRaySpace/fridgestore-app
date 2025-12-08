@@ -1,17 +1,29 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native"
-import { useItemService } from "../../item/useItemService";
-import { useNavigation } from "@react-navigation/native";
+import { Pressable, StyleSheet, Text, TextInput, TextInputKeyPressEvent, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Checkbox from 'expo-checkbox';
+
+import { useItemService } from '../../item/useItemService';
+import { useState } from 'react';
 
 export function AddItem() {
   const navigation = useNavigation();
+
   const { saveItem } = useItemService();
 
+  const [name, setName] = useState<string>('');
+  const [expired, setExpired] = useState<boolean>(false);
+
   function handleSave() {
-    saveItem({
-      name: 'Test',
-      qty: 1,
-    });
+    saveItem({ name, expired });
     navigation.pop();
+  }
+
+  function handleNameChange(value: string) {
+    setName(value);
+  }
+
+  function handleExpiredChange(value: boolean) {
+    setExpired(value);
   }
 
   return (
@@ -19,11 +31,16 @@ export function AddItem() {
       <View style={styles.contentView}>
         <View style={styles.inputView}>
           <Text style={styles.inputText}>Name</Text>
-          <TextInput style={styles.input} placeholder='Item' placeholderTextColor='#ccc' />
+          <TextInput
+            style={styles.input}
+            placeholder="Item"
+            placeholderTextColor="#ccc"
+            onChangeText={handleNameChange}
+          />
         </View>
-        <View style={styles.inputView}>
-          <Text style={styles.inputText}>Quantity</Text>
-          <TextInput style={styles.input} placeholder='1.0' placeholderTextColor='#ccc' />
+        <View style={styles.checkboxInputView}>
+          <Checkbox color="#007aff" value={expired} onValueChange={handleExpiredChange} />
+          <Text style={styles.inputText}>Expired</Text>
         </View>
       </View>
       <View style={styles.bottomView}>
@@ -47,6 +64,10 @@ const styles = StyleSheet.create({
   inputText: {},
   inputView: {
     marginBottom: 10,
+  },
+  checkboxInputView: {
+    flexDirection: 'row',
+    gap: 10,
   },
   input: {
     backgroundColor: '#eee',
