@@ -1,9 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HeaderButton, Text } from '@react-navigation/elements';
-import {
-  createStaticNavigation,
-  StaticParamList,
-} from '@react-navigation/native';
+import { createStaticNavigation, StaticParamList } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from './screens/Home';
 import { NotFound } from './screens/NotFound';
@@ -21,7 +18,7 @@ const RootStack = createNativeStackNavigator({
     addItem: {
       screen: AddItem,
       options: {
-        title: 'Adding an item'
+        title: 'Adding an item',
       },
     },
     notFound: {

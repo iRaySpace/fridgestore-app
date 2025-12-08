@@ -6,10 +6,7 @@ import { Asset } from 'expo-asset';
 import { createURL } from 'expo-linking';
 import { Navigation } from './navigation';
 
-Asset.loadAsync([
-  ...NavigationAssets,
-  require('./assets/no-stock.png'),
-]);
+Asset.loadAsync([...NavigationAssets, require('./assets/no-stock.png')]);
 
 SplashScreen.preventAutoHideAsync();
 

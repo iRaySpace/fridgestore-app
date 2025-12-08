@@ -1,28 +1,28 @@
-import { useState } from "react";
-import { itemService } from "./item-service";
-import { Item } from "./item";
+import { useState } from 'react';
+import { itemService } from './item-service';
+import { Item } from './item';
 
 export function useItemService() {
-    const [items, setItems] = useState(itemService.getAll());
+  const [items, setItems] = useState(itemService.getAll());
 
-    function refresh() {
-        setItems(itemService.getAll());
-    }
+  function refresh() {
+    setItems(itemService.getAll());
+  }
 
-    function saveItem(item: Item) {
-        itemService.save(item);
-        refresh();
-    }
+  function saveItem(item: Item) {
+    itemService.save(item);
+    refresh();
+  }
 
-    function removeItem(id: number) {
-        itemService.remove(id);
-        refresh();
-    }
+  function removeItem(id: number) {
+    itemService.remove(id);
+    refresh();
+  }
 
-    return {
-        items,
-        refresh,
-        saveItem,
-        removeItem,
-    };
+  return {
+    items,
+    refresh,
+    saveItem,
+    removeItem,
+  };
 }

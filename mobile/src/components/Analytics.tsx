@@ -1,5 +1,5 @@
-import { View, StyleSheet, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, StyleSheet, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export function Analytics() {
   return (
@@ -8,11 +8,7 @@ export function Analytics() {
         <View style={styles.cardTopView}>
           <Text style={styles.cardText}>Total</Text>
           <View style={styles.iconView}>
-            <Ionicons
-              name='file-tray-full-outline'
-              color='#007AFF'
-              size={21}
-            />
+            <Ionicons name="file-tray-full-outline" color="#007AFF" size={21} />
           </View>
         </View>
         <Text style={[styles.cardText, styles.numberText]}>10</Text>
@@ -21,17 +17,13 @@ export function Analytics() {
         <View style={styles.cardTopView}>
           <Text style={styles.cardText}>Expired</Text>
           <View style={styles.iconView}>
-            <Ionicons
-              name='ban-outline' 
-              color='#FF9500'
-              size={21}
-            />
+            <Ionicons name="ban-outline" color="#FF2D55" size={21} />
           </View>
         </View>
         <Text style={[styles.cardText, styles.numberText]}>1</Text>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -55,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#007AFF',
   },
   expiredView: {
-    backgroundColor: '#FF9500',
+    backgroundColor: '#FF2D55',
   },
   cardText: {
     color: '#fff',
