@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from './screens/Home';
 import { NotFound } from './screens/NotFound';
 import { AddItem } from './screens/AddItem';
+import { EditItem } from './screens/EditItem';
 
 const RootStack = createNativeStackNavigator({
   screens: {
@@ -19,6 +20,12 @@ const RootStack = createNativeStackNavigator({
       screen: AddItem,
       options: {
         title: 'Adding an item',
+      },
+    },
+    editItem: {
+      screen: EditItem,
+      options: {
+        title: 'Editing an item',
       },
     },
     notFound: {
