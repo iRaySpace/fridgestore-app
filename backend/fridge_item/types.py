@@ -12,7 +12,7 @@ class FridgeItemType:
     updated_at: datetime
     id: int
     name: str
-    qty: int
+    expired: bool
 
     @classmethod
     def from_orm(cls, data: FridgeItem):
@@ -21,7 +21,7 @@ class FridgeItemType:
             updated_at=data.updated_at,
             id=data.id,
             name=data.name,
-            qty=data.qty,
+            expired=data.expired,
         )
 
     @strawberry.field

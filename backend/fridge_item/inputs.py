@@ -5,11 +5,11 @@ from typing import Optional
 @strawberry.input
 class CreateFridgeItemInput:
     name: str
-    qty: int
+    expired: bool
 
 
 @strawberry.input
 class UpdateFridgeItemInput:
     id: int
     name: Optional[str] = strawberry.UNSET
-    qty: Optional[int] = strawberry.UNSET
+    expired: Optional[bool] = strawberry.UNSET

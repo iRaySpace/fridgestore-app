@@ -1,5 +1,5 @@
 from database.base import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean
 
 
 class FridgeItem(Base):
@@ -7,4 +7,4 @@ class FridgeItem(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    qty = Column(Integer, default=1)
+    expired = Column(Boolean, default=False)

@@ -17,7 +17,7 @@ def create_fridge_item(input: CreateFridgeItemInput) -> UpdatedFridgeItemType:
         )
 
     with transactional() as session:
-        fridge_item = FridgeItem(name=input.name, qty=input.qty)
+        fridge_item = FridgeItem(name=input.name, expired=input.expired)
         session.add(fridge_item)
         session.flush()
         return UpdatedFridgeItemType(
@@ -44,7 +44,7 @@ def update_fridge_item(input: UpdateFridgeItemInput) -> UpdatedFridgeItemType:
             )
 
         fridge_item.name = input.name
-        fridge_item.qty = input.qty
+        fridge_item.expired = input.expired
         session.flush()
 
         return UpdatedFridgeItemType(
@@ -77,11 +77,7 @@ def _validate_fields(data: dict) -> List[str]:
     errors = []
 
     name = data.get("name")
-    qty = data.get("qty")
-
     if name is not None and not name.strip():
         errors.append("Name cannot be empty")
-    if qty is None or qty < 0:
-        errors.append("Quantity cannot be empty or negative")
 
     return errors

@@ -11,3 +11,11 @@ def get_fridge_items(limit: int = 10, offset: int = 0) -> List[FridgeItemType]:
         stmt = select(FridgeItem).limit(limit).offset(offset)
         data = session.execute(stmt).scalars().all()
         return [FridgeItemType.from_orm(d) for d in data]
+
+
+def get_fridge_item(id: int) -> FridgeItemType:
+    with transactional() as session:
+        fridge_item = session.get(FridgeItem, id)
+        if not fridge_item:
+            return None
+        return FridgeItemType.from_orm(fridge_item)
